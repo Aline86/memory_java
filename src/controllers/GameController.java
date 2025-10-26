@@ -30,11 +30,12 @@ public class GameController {
     RightPanel rightPanel;
     Header header;
     TilesUI tilesUI;
-    FullBoard fullBoard;
+    FullBoard tiles;
 
-    public GameController(int playerInList, Scores scores, StageManager stageManager) {
+    public GameController(int playerInList, Scores scores, StageManager stageManager, FullBoard tiles) {
         this.playerInList = playerInList;
         this.scores = scores;
+        this.tiles = tiles;
         scores.setPlayer(scores.getPlayers().get(playerInList));
         //elementCreatorService = new AddElementToPaneCreator(scores);
         this.stageManager = stageManager;
@@ -50,28 +51,28 @@ public class GameController {
 
 
     public void initClicOnPicture() {
-        for (Map.Entry<Tile, ImageView> entry : FullBoard.tiles.entrySet()) {
+        for (Map.Entry<Tile, ImageView> entry : tiles.getTiles().entrySet()) {
             Tile tile = entry.getKey();
             ImageView imageView = entry.getValue();
             imageView.setOnMouseClicked(event -> {
                 this.actionService.executeAction(TILE_CLICK, imageView);
-                FullBoard.tiles.get(tile).setDisable(true);
+                tiles.getTiles().get(tile).setDisable(true);
                 ArrayList<Tile> tilesPair = this.handler.getTmpClickedTiles();
                 switch (this.handler.clickHandler(tile)) {
                     case FINISHED:
                         gameClickFinishedHandler.onGameFinished(playerInList, scores);
                         break;
                     case PAIR_NOT_FOUND:
-                        this.tilesUI.animateTiles(FullBoard.tiles, tilesPair);
+                        this.tilesUI.animateTiles(tiles.getTiles(), tilesPair);
                         this.handler.getTmpClickedTiles().clear();
                         this.scoreUpdater.setScore(false);
 
                         break;
                     case WAITING_PAIR:
-                        this.tilesUI.waitForSecondTile(FullBoard.tiles, tilesPair);
+                        this.tilesUI.waitForSecondTile(tiles.getTiles(), tilesPair);
                         break;
                     default:
-                        this.tilesUI.setFoundTiles(FullBoard.tiles, tilesPair);
+                        this.tilesUI.setFoundTiles(tiles.getTiles(), tilesPair);
                         this.scoreUpdater.setScore(true);
                         this.handler.getTmpClickedTiles().clear();
                         break;

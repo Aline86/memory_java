@@ -23,12 +23,12 @@ public class MemoryApp extends Application {
     private Scores scores;
     private ParametersApp parameters;
     private int playerInList;
-
+    private FullBoard board;
     private StageManager stageManager;
     public MemoryApp() {
         playerInList = 0;
         scores = new Scores(0, 0);
-
+        board = new FullBoard();
         parameters = new ParametersApp(scores);
         comboCreatorService = new ComboCreator();
         elementCreatorService = new AddElementToPaneCreator();
@@ -40,6 +40,7 @@ public class MemoryApp extends Application {
     public MemoryApp(int playerInList, Scores scores) {
         this.playerInList = playerInList;
         this.scores = scores;
+        board = new FullBoard();
         stageManager = new StageManager();
     }
 
@@ -52,9 +53,9 @@ public class MemoryApp extends Application {
         }
 
 
-        FullGamePanel createFullPanel = new FullGamePanel(scores);
+        FullGamePanel createFullPanel = new FullGamePanel(scores, board);
         stage.setScene(new Scene(createFullPanel.createContent(), 1200, 825));
-        GameController gameController = new GameController(playerInList, scores, stageManager);
+        GameController gameController = new GameController(playerInList, scores, stageManager, board);
 
         gameController.initClicOnPicture();
         this.stageManager.setStage(stage);

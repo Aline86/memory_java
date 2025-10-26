@@ -16,12 +16,12 @@ public class FullGamePanel {
     Header header;
     Board board;
     private AddElementToPaneCreator elementCreatorService;
-
-    public FullGamePanel(Scores scores) {
+    FullBoard tiles;
+    public FullGamePanel(Scores scores, FullBoard tiles) {
         elementCreatorService = new AddElementToPaneCreator();
         this.rightPanel = new RightPanel(elementCreatorService, scores);
         this.header = new Header(elementCreatorService);
-        this.board = new Board(elementCreatorService);
+        this.board = new Board(elementCreatorService, tiles);
 
     }
     public Parent createContent() {

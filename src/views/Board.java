@@ -16,9 +16,9 @@ import java.util.List;
 public class Board {
     private AddElementToPaneCreator elementCreatorService;
     FullBoard fullBoard;
-    public Board(AddElementToPaneCreator elementCreatorService) {
+    public Board(AddElementToPaneCreator elementCreatorService, FullBoard tiles) {
         this.elementCreatorService = elementCreatorService;
-        this.fullBoard = new FullBoard();
+        this.fullBoard = tiles;
     }
 
     public TilePane createBodyTilesBoard() {
