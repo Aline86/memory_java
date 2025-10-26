@@ -21,9 +21,8 @@ public class ElementCreator {
     private ActionOnClickHandler actionService;
     private Scores scores;
 
-    public ElementCreator(ActionOnClickHandler actionService, Scores scores) {
+    public ElementCreator(ActionOnClickHandler actionService) {
         this.actionService = actionService;
-        this.scores = scores;
     }
 
     public Button createButton(String text, Actions actionsName, VisualCaracteristics caracteristics) {

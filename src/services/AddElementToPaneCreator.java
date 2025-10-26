@@ -31,9 +31,9 @@ public class AddElementToPaneCreator implements IElementPaneCreator {
     private StackPane text;
     private Label label;
 
-    public AddElementToPaneCreator(Scores scores) {
+    public AddElementToPaneCreator() {
         ActionOnClickHandler actionOnClickHandlerService = new ActionOnClickHandler();
-        this.elementService = new ElementCreator(actionOnClickHandlerService, scores);
+        this.elementService = new ElementCreator(actionOnClickHandlerService);
     }
     // Combobox
     public void addElementToPane(ComboBox comboBox, Actions actionsName, VisualCaracteristics caracteristics, Pane pane) {
