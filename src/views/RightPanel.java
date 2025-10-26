@@ -14,11 +14,11 @@ import visualcontent.entities.VisualCaracteristics;
 
 public class RightPanel {
     private AddElementToPaneCreator elementCreatorService;
-
+    private Scores scores;
     private ComboCreator comboCreatorService;
-    public RightPanel(AddElementToPaneCreator elementCreatorService) {
+    public RightPanel(AddElementToPaneCreator elementCreatorService, Scores scores) {
         this.elementCreatorService = elementCreatorService;
-
+        this.scores = scores;
         this.comboCreatorService = new ComboCreator();
     }
 
@@ -32,19 +32,19 @@ public class RightPanel {
         // Création des élément Label + texte
         VisualCaracteristics playerNameCaracteristiques = new VisualCaracteristics(400, 50);
         // A normaliser avec le bind au changement de joueur pas encore codé
-        elementCreatorService.addElementToPane(new SimpleStringProperty(Scores.getPlayer().getName()), playerNameCaracteristiques, true);
+        elementCreatorService.addElementToPane(new SimpleStringProperty(this.scores.getPlayer().getName()), playerNameCaracteristiques, true);
         elementCreatorService.addContentToPane(rightPanelContainer, elementCreatorService, ElementTypes.TEXT);
 
 
         VisualCaracteristics tentativesCaracteristiques = new VisualCaracteristics(300, 50);
         VisualCaracteristics tentativesResultatCaracteristiques = new VisualCaracteristics(100, 50);
 
-        elementCreatorService.addElementToPane("Nombre de tentatives", tentativesCaracteristiques, Scores.getTentatives(), tentativesResultatCaracteristiques);
+        elementCreatorService.addElementToPane("Nombre de tentatives", tentativesCaracteristiques, this.scores.getTentatives(), tentativesResultatCaracteristiques);
         elementCreatorService.addContentToPane(rightPanelContainer, elementCreatorService, ElementTypes.TEXT_LABEL_H);
 
         VisualCaracteristics facesRetourneesCaracteristiques = new VisualCaracteristics(300, 50);
         VisualCaracteristics nbFacesRetourneesCaracteristiques = new VisualCaracteristics(100, 50);
-        elementCreatorService.addElementToPane("Nombre de faces retournées", facesRetourneesCaracteristiques, Scores.getFaceRetournees(), nbFacesRetourneesCaracteristiques);
+        elementCreatorService.addElementToPane("Nombre de faces retournées", facesRetourneesCaracteristiques, this.scores.getFaceRetournees(), nbFacesRetourneesCaracteristiques);
         elementCreatorService.addContentToPane(rightPanelContainer, elementCreatorService, ElementTypes.TEXT_LABEL_H);
 
         // Création de la combo

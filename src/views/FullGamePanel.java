@@ -1,6 +1,7 @@
 package views;
 
 import entities.FullBoard;
+import entities.Player;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.layout.HBox;
@@ -8,6 +9,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import services.AddElementToPaneCreator;
+import services.Scores;
 
 public class FullGamePanel {
     RightPanel rightPanel;
@@ -15,9 +17,9 @@ public class FullGamePanel {
     Board board;
     private AddElementToPaneCreator elementCreatorService;
 
-    public FullGamePanel() {
+    public FullGamePanel(Scores scores) {
         elementCreatorService = new AddElementToPaneCreator();
-        this.rightPanel = new RightPanel(elementCreatorService);
+        this.rightPanel = new RightPanel(elementCreatorService, scores);
         this.header = new Header(elementCreatorService);
         this.board = new Board(elementCreatorService);
 

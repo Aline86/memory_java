@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Scores {
 
-    private static StringProperty faceRetournees;
-    private static StringProperty tentatives;
-    private static Player player;
+    private StringProperty faceRetournees;
+    private StringProperty tentatives;
+    private Player player;
 
     private List<Player> players;
 
@@ -21,7 +21,7 @@ public class Scores {
         this.players = new ArrayList<Player>();
     }
 
-    public static StringProperty getTentatives() {
+    public StringProperty getTentatives() {
         return tentatives;
     }
 
@@ -43,7 +43,7 @@ public class Scores {
     public boolean checkIfFinished() {
         return Integer.parseInt(getFaceRetournees().getValue()) == 8;
     }
-    public static Player getPlayer() {
+    public Player getPlayer() {
         return player;
     }
 
@@ -51,7 +51,7 @@ public class Scores {
         this.player = player;
     }
 
-    public static StringProperty getFaceRetournees() {
+    public StringProperty getFaceRetournees() {
         return faceRetournees;
     }
 

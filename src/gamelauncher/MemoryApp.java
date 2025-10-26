@@ -2,6 +2,7 @@ package gamelauncher;
 
 import controllers.GameController;
 import entities.FullBoard;
+import entities.Player;
 import entities.Tile;
 import javafx.scene.image.ImageView;
 import services.Scores;
@@ -27,6 +28,7 @@ public class MemoryApp extends Application {
     public MemoryApp() {
         playerInList = 0;
         scores = new Scores(0, 0);
+
         parameters = new ParametersApp(scores);
         comboCreatorService = new ComboCreator();
         elementCreatorService = new AddElementToPaneCreator();
@@ -48,10 +50,9 @@ public class MemoryApp extends Application {
         if(scores.getPlayers().isEmpty()) {
             this.parameters.initParametersPrompt();
         }
-        System.out.println("scores " + scores);
 
 
-        FullGamePanel createFullPanel = new FullGamePanel();
+        FullGamePanel createFullPanel = new FullGamePanel(scores);
         stage.setScene(new Scene(createFullPanel.createContent(), 1200, 825));
         GameController gameController = new GameController(playerInList, scores, stageManager);
 
