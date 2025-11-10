@@ -12,12 +12,10 @@ import static enums.GameState.*;
 public class TileClickHandler {
     GameFinishedHandler gameFinishedHandler;
     Scores scores;
-    ActionOnClickHandler actionService = new ActionOnClickHandler();
     ArrayList<Tile> tmpClickedTiles;
+    
     public TileClickHandler(Scores scores) {
-
         this.scores = scores;
-        this.actionService = new ActionOnClickHandler();
         this.tmpClickedTiles = new ArrayList<>();
     }
 
