@@ -27,7 +27,7 @@ public class MemoryApp extends Application {
 
         parameters = new ParametersApp(scores);
         comboCreatorService = new ComboCreator();
-        elementCreatorService = new AddElementToPaneCreator();
+        elementCreatorService = new AddElementToPaneCreator(scores);
         stageManager = new StageManager();
 
 
@@ -63,5 +63,4 @@ public class MemoryApp extends Application {
         launch(args);
     }
 }
-
 

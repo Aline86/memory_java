@@ -1,6 +1,6 @@
 package views;
 
-import entities.FullBoard;
+import entities.Tiles;
 import entities.Tile;
 import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
@@ -15,10 +15,10 @@ import java.util.List;
 
 public class Board {
     private AddElementToPaneCreator elementCreatorService;
-    FullBoard fullBoard;
-    public Board(AddElementToPaneCreator elementCreatorService, FullBoard tiles) {
+    Tiles tiles;
+    public Board(AddElementToPaneCreator elementCreatorService, Tiles tiles) {
         this.elementCreatorService = elementCreatorService;
-        this.fullBoard = tiles;
+        this.tiles = tiles;
     }
 
     public TilePane createBodyTilesBoard() {
@@ -36,7 +36,7 @@ public class Board {
 
         }
 
-        this.fullBoard.setTiles(shuffled);
+        this.tiles.setTiles(shuffled);
 
         return tilePane;
     }

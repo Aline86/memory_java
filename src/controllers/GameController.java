@@ -1,7 +1,7 @@
 package controllers;
 
 
-import entities.FullBoard;
+import entities.Tiles;
 import entities.Tile;
 import handlers.ActionOnClickHandler;
 import handlers.GameFinishedHandler;
@@ -30,9 +30,9 @@ public class GameController {
     RightPanel rightPanel;
     Header header;
     TilesUI tilesUI;
-    FullBoard tiles;
+    Tiles tiles;
 
-    public GameController(int playerInList, Scores scores, StageManager stageManager, FullBoard tiles) {
+    public GameController(int playerInList, Scores scores, StageManager stageManager, Tiles tiles) {
         this.playerInList = playerInList;
         this.scores = scores;
         this.tiles = tiles;

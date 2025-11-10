@@ -13,9 +13,10 @@ public class TileClickHandler {
     GameFinishedHandler gameFinishedHandler;
     Scores scores;
     ArrayList<Tile> tmpClickedTiles;
-    
     public TileClickHandler(Scores scores) {
+
         this.scores = scores;
+
         this.tmpClickedTiles = new ArrayList<>();
     }
 
